@@ -1,0 +1,25 @@
+.card-wrapper{
+    position: relative;
+    padding: 20px;
+    margin: 0 20px;
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    background: purple;
+    box-shadow: black 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title{
+    color: white;
+    font-family: "ibm plex mono";
+    text-transform: uppercase;
+}
+
+.card-img-wrapper{
+    background: white;
+    width: 100%;
+    flex-basis: 60%;
+}

@@ -1,0 +1,21 @@
+.scroll-container{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+}
+.test{
+    height: 20dvh;
+    width: 40dvh;
+    background: white;
+    color: black;
+    font-size: 4vw;
+    margin-top: 20px;
+    opacity: 0.1;
+}
+
+.hide{
+    opacity: 0 !important;
+    pointer-events: none;
+    height: 20dvh;
+}
