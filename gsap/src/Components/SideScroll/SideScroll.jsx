@@ -21,7 +21,7 @@ export default function SideScroll() {
                 scrollTrigger: {
                   trigger: item,
                   pin: false,
-                  start: "top bottom",
+                  start: "top bottom+=40dvh",
                   end: "bottom top",
                   scrub: 0,
                   snap: 1/12
@@ -36,6 +36,7 @@ export default function SideScroll() {
                 },
                 {
                     opacity: 1,
+                    background: "red",
                     scaleX: 1.33,
                     filter: "blur(0px)"
                 }
