@@ -12,10 +12,19 @@
     font-size: 4vw;
     margin-top: 20px;
     opacity: 0.1;
+    overflow: hidden;
 }
 
 .hide{
     opacity: 0 !important;
     pointer-events: none;
     height: 20dvh;
+}
+
+.card-img{
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

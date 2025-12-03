@@ -1,11 +1,12 @@
 import React from "react";
-import SideScroll from "../../Components/SideScroll/SideScroll";
+import VertScroll from "../../Components/SideScroll/vertScroll";
+import './gallery.css';
 
 const Gallery = () => {
     return(
-        <>
-            <SideScroll/>
-        </>
+        <div className="gallery-container">
+            <VertScroll/>
+        </div>
     )
 }
 

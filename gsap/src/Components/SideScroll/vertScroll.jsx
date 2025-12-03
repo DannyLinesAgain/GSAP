@@ -2,12 +2,12 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Lenis from 'lenis';
 import { useEffect, useLayoutEffect, useRef } from "react";
-import "./sideScroll.css";
+import "./vertScroll.css";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SideScroll() {
+export default function VertScroll() {
     const component = useRef();
     const slider = useRef();
     
@@ -21,13 +21,27 @@ export default function SideScroll() {
                 scrollTrigger: {
                   trigger: item,
                   pin: false,
-                  start: "top bottom+=40dvh",
-                  end: "bottom top",
+                  start: "top+=150 bottom",
+                  end: "bottom-=150 top",
                   scrub: 0,
-                  snap: 1/12
-                }
-              });
-            
+                },
+                onUpdate: () => {console.log(i)}
+            });
+
+
+            let imgTmln = gsap.timeline({
+                defaults: {
+                  ease: "none"
+                },
+                scrollTrigger: {
+                  trigger: item,
+                  pin: false,
+                  start: "top+=150 bottom",
+                  end: "bottom-=150 top",
+                  scrub: 0,
+                },
+                onUpdate: () => {console.log(i)}
+            });
 
             tmln.fromTo(item, 
                 {
@@ -40,13 +54,28 @@ export default function SideScroll() {
                     scaleX: 1.33,
                     filter: "blur(0px)"
                 }
-            )
-            tmln.to(item, {
+            ).to(item, {
                 opacity: 0.1,
                 scaleX: 1,
+                background: "white"
             });
-            
+
+            let imgTarg = item.querySelector('.card-img');
+            imgTmln
+                .fromTo(imgTarg, 
+                    {
+                        scaleY: 1
+                    },
+                    {
+                        scaleY: 1.33,
+                    }, '<'
+                )
+                .to(imgTarg, {
+                    scaleY: 1,
+                }); 
           });
+
+            
     }, {scope: component})
 
 
@@ -69,8 +98,17 @@ export default function SideScroll() {
         <div className="scroll-container" ref={component}>
             <div ref={slider} className="container">
                 {Array(16).fill(null).map((_, i) => (
-                    
-                    <div className={`${(i <= 1 || i >= 14 )? "hide" : "test"}`}>{i-2}</div>
+                    <div className={`${(i <= 1 || i >= 14 )? "hide" : "test"}`}>
+                        {
+                            !(i <= 1 || i >= 14 )&&
+                            <div className="card-img" 
+                                style={{
+                                    backgroundImage: `url("../img/${i % 6}.webp")`,
+                                }}
+                            />
+                        }
+                        
+                    </div>
                 ))}
             </div>
         </div>
